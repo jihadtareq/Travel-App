@@ -9,6 +9,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "html-webpack-plugin": "^4.3.0",
+    "node-geonames-client": "0.0.2",
     "webpack-cli": "^3.3.12"
   },
   "devDependencies": {
