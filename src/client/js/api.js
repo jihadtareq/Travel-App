@@ -55,6 +55,30 @@ const getDataAPI = async(userData)=>{
 
 
 }
+
+//SAVE NEWTRIP
+
+const saveNewtrip = (newTripHolder) =>{
+    //check if the LocalStorage is supported by User's Browser
+    if(window.localStorage !== undefined){
+        let arrTPcapstone = [];
+        // getitem tp_capstone from localstorage and retun it in json form 
+        if (localStorage.getItem('tp_capstone')){
+            //return the newtripHolder in array too
+            arrTPcapstone = [...JSON.parse(localStorage.getItem('tp_capstone')),newTripHolder]
+        }else{
+            arrTPcapstone=[newTripHolder];
+        }
+
+        //add the trip to localstorage
+        localStorage.setItem('tp_capstone',JSON.stringify(arrTPcapstone))
+
+    }else{
+        alert('Your Browser doesn\'t support the local storage. \nPlease, update your browser!');
+        
+        return false;
+    }
+}
 export{
     coordinatesAPI,
     getDataAPI
