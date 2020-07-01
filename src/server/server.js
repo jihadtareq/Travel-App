@@ -18,12 +18,12 @@ const cors = require('cors');
 app.use(cors());
 
 // Initialize the main project folder
-app.use(express.static('website'));
+app.use(express.static('dist'));
 
 
 // Setup Server
 
-const port = 8000;
+const port = 8080;
 
 const listen = app.listen(port,listening);
 
@@ -31,32 +31,3 @@ function listening(){
     console.log("#running server");
     console.log(`running on localhost: ${port}`);
 }
-
-// Callback function to complete GET '/all'
-app.get('/all',getData);
-
-function getData(req,res){
-    res.send(projectData);
-    console.log(projectData);
-
-}
-
-// Post Route
-  const weatherData = [];
-  app.post('/add',add);
-
-  function add(req,res){
-      newEntry={
-          date:req.body.date,
-          temperature:req.body.temp,
-          content:req.body.content,
-      }
-     
-      weatherData.push(newEntry);
-      projectData.data = weatherData
-      console.log(weatherData);
-      res.send(weatherData);
-     
-
-
-  }
