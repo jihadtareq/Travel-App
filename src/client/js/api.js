@@ -13,8 +13,8 @@ const coordinatesAPI = async(city,country='')=>{
     }
 }
 
-//Get DATA from API
-const getDataAPI = async(userData)=>{
+/*>>>>>>>>>>>>>>>****Get DATA from API****<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+const getDataAPI = async (userData)=>{
     let trip={}
 
     trip.error='';
@@ -44,15 +44,17 @@ const getDataAPI = async(userData)=>{
 
             //add the destination info to the object
 
-            trip.destination = {
+           let dataDestination = trip.destination = {
                 city: resDestinaton.geonames[0].toponymName,
                 country: resDestinaton.geonames[0].countryName,
                 lat: resDestinaton.geonames[0].lat,
                 lng: resDestinaton.geonames[0].lng
             };
+            console.log(dataDestination)
         }
     })
 
+    return trip;
 
 }
 
@@ -80,6 +82,6 @@ const saveNewtrip = (newTripHolder) =>{
     }
 }
 export{
-    coordinatesAPI,
-    getDataAPI
+    getDataAPI,
+    saveNewtrip
 }
