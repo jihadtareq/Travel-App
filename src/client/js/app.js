@@ -1,97 +1,52 @@
-/* Global Variables */
+import{getDataAPI,saveNewtrip} from './api'
+import{validate} from './validation'
+import { toggleTripCreateSection } from '../../../../../travel-planner imp/src/client/js/helpers';
 
-// Create a new date instance dynamically with JS
-let d = new Date();
-let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+//this array will contaib multi-object Destinations
 
-// Personal API Key for OpenWeatherMap API
-const baseURL ='https://api.openweathermap.org/data/2.5/weather?zip=';
-const APIkey = '&APPID=e5f1d30dabc61588114bc27d77162b8e';
+let ArrTrip = [];
 
-// Event listener to add function to existing HTML DOM element
-document.getElementById('generate').addEventListener('click',performAction)
+const creatTripBlock = (data)=>{
+    //get the DOM
+    const tripBlock = document.getElementById('');
+    tripBlock.innerHTML='';
 
-/* Function called by event listener */
-function performAction(e){
-
-    const newFeelings = document.getElementById('feelings').value;
-    const zip =document.getElementById('zip').value;
-    getData(baseURL,zip,APIkey)
-    .then(function(temperature){
-        //add data
-        console.log(temperature);
-        postData('/add',{temp:temperature,date:newDate,content:newFeelings})
-        updateUI()
-
-    })    
+    //dispaly the tripblock in the browser
+    //tripBlock.appendChild();
 }
 
-/* Function to GET Web API Data*/
-const getData = async (baseURL,zip,key)=>{
-    const res =await fetch(baseURL + zip + ',us' + key)
-    try{
-        const data = await res.json();
-        const temperature=data.main.temp;
-        return temperature;
-    }catch(error){
-        console.log("error",error);
-    }
-}
-/* Function to POST data */
-const postData = async(url='',data={})=>{
 
-    const response = await fetch(url,{
-        method:'POST',
-        credentials:'same-origin',
-        headers:{
-            'content-type':'application/json',
-        },
-        body:JSON.stringify(data),
+/* ========= */
+/* =========== START EXECUTION PART ============= */
+/* ========= */
 
-    });
+document.addEventListener('DOMContentLoaded',()=>{
+    //get the DOM
+    const searchBtn = document.getElementById('search')
 
-    try{
-        const newData = await response.json();
-        console.log(newDate);
-        return newData;
-    }
-    catch(error)
-    {
-       console.log("error",error);
-    }
+   // Event Listener: Click => on search button;
+   searchBtn.addEventListener('click', ()=>{
+       //check if the btn is not disabled
+       if(!searchBtn.classList.contains('disabled')){
+           let userData = validate()
 
-}
+           if(userData){
+               console.log(userData)
+                 getDataAPI(userData)
+                 .then(DestinationTrip =>{
+                    if(DestinationTrip.error){
+                        alert('There is an error in Destination trip')
+                        // make the search btn enable   
+                        document.getElementById('search').classList.remove('disabled')
+  
+                    }else{
+                        ArrTrip.push(DestinationTrip)
+                        console.log(ArrTrip)
+                    }
 
-/* Function to GET Project Data */
+                 });
+           }
 
-const getProjectData = async(url='')=>{
-    const res = await fetch(url);
-    try{
-        const allData =await res.json();
-        return allData;
-    }catch(error){
-        console.log("error",error);
-    }
-
-}
-
-/*UPDATEUI */
-const updateUI = async()=>{
-
-    const request = await fetch('/all');
-    try{
-        let allData = await request.json();
-        allData = allData.data
-        console.log(allData);
-        for(let i=0;i<allData.length;i++){
-        document.getElementById('date').innerHTML=allData[i].date;
-        document.getElementById('temp').innerHTML=allData[i].temperature;
-        document.getElementById('content').innerHTML=allData[i].content;
-        }
-
-    }catch(error){
-        console.log("error",error);
-    }
-
-}
-
+       }
+   });
+})
