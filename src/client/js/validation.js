@@ -5,7 +5,7 @@ const validate = () =>{
     const destination = document.getElementById('destination')
 
     //check if the current location is valid 
-    if(location.value.length < 10)
+    if(location.value.length < 3)
     {
         location.classList.remove('valid')
         location.classList.add('error')
@@ -17,8 +17,8 @@ const validate = () =>{
         location.classList.add('valid')
     }
 
-    //chech the destination
-    if(destination.value.length<10){
+    //check the destination
+    if(destination.value.length<3){
         let error =''
 
         destination.classList.remove('valid')
@@ -43,4 +43,8 @@ const validate = () =>{
         alert('Can not Search')
         return false
     }
+}
+
+export{
+    validate
 }
