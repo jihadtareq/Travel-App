@@ -7,6 +7,9 @@ const coordinatesAPI = async(city,country='')=>{
     const res = await fetch('https://cors-anywhere.herokuapp.com/' + geonameURL);
     try{
         const data = await res.json();
+        if(data.totalResultsCount == 0) {
+            return { error: "The "+ city +" can't be found" };
+        }
         return data;
 
     }
