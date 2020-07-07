@@ -67,56 +67,59 @@
 </nav>
 <!------------------------------------------------MAIN_-------------------------------------------------->
 <main >
-  <div id = "app">
-    <div class ="holder headline">
-      Travel Application
-    </div>
     <!--TRIP CARD-->
-    <section id="data-card">
-      <!--LOCATIONS OF THE TRIP-->
-      <div class="trip-form__row">
-        <div id="data-form">
-          <div id="data-form-location">
-            <label for="location">
-              <span>Current Location</span>
-              <input type="text" id="location" placeholder="enter your current locantion">
-            </label>
-          </div>
-          <div id="data-form-destination">
-            <label for="destination">
-              <span>Destination</span>
-              <input type="text" id="destination" placeholder="enter name of country you want travel">
-            </label>
+    <section id="trip-form" class="trip-form">
+      <div class="container">
+          <div class="trip-form__block">
+              <div class="page-title">
+                      <h1>Travel Planner</h1>
+                      <p>Plan your next wonderful trip with us!</p>
+              </div>
+               <!--LOCATIONS OF THE TRIP-->
+              <div class="trip-form__entry">
+                  <div class="trip-form__row">
+                      <div class="trip-form__location">
+                        <label for="location">
+                          <span>Current Location</span>
+                          <input type="text" id="location" name="location" placeholder="enter your current locantion">
+                        </label>
+                      </div>
+                      <div class="trip-form__destination">
+                        <label for="destination">
+                          <span>Destination</span>
+                          <input type="text" id="destination" name="destination" placeholder="enter name of country you want travel">
+                        </label>
+                      </div>
+                  </div>
+                   <!--TRAVELLING TIME-->
+                  <div class="trip-form__row">
+                      <div class="trip-form__date-start datepicker">
+                          <label for="date-start">
+                              <span>Departing</span>
+                              <input type="date" id="date-start" name="date-start">
+                          </label>
+                      </div>
+                      <div class="trip-form__date-end datepicker">
+                          <label for="date-end">
+                              <span>Returning</span>
+                              <input type="date" id="date-end" name="date-end">
+                          </label>
+                      </div>
+                  </div>
+                  <!--Search bttn-->
+                  <div class="trip-form__search">
+                      <span>&nbsp;</span>
+                      <button id="search">Search</button>
+                  </div>
+              </div>
           </div>
       </div>
-        <!--TRAVELLING TIME-->
-        <div class="trip-form__row">
-          <div id="start-date-form">
-            <label id="start-date">
-              <span>Start Date</span>
-              <input type="date" id="start-date" name="start-date">
-            </label>
-          </div>
-          <div id="end-date-form">
-            <label id="start-date">
-              <span>End Date</span>
-              <input type="date" id="end-date" name="end-date">
-            </label>
-          </div>
-        </div>
-        <!--Search bttn-->
-        <div class="trip-search">
-          <span>&nbsp;</span>
-          <button id="search">Search</button>
-        </div>
-      </div>
-    </section>
-  </div>
+  </section>
 </main>
 <!------------------------------------------------FOOTER--------------------------------------------------->
 <div class="jumbotron text-center" style="margin-bottom:0">
   <div class="footer container">
-    <div class="copyright">Travel Planner &copy; 2019</div>
+    <div class="copyright">Travel Application &copy;2020</div>
     <ul class="social-links">
         <li><a class="s-icon fb" target="_blank" title="Facebook" href="https://www.facebook.com/jihad.tareq.5/"></a></li>
         <li><a class="s-icon in" target="_blank" title="Linkedin" href="https://www.linkedin.com/in/jihadtarek/"></a></li>
