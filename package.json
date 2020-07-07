@@ -4,24 +4,27 @@
   "description": "## Overview This project requires you to create an asynchronous web app that uses Web API and user data to dynamically update the UI.",
   "main": "webpack.dev.js",
   "dependencies": {
-    "@babel/polyfill": "^7.10.1",
     "body-parser": "^1.19.0",
+    "bootstrap": "^4.5.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "html-webpack-plugin": "^4.3.0",
     "mini-css-extract-plugin": "^0.9.0",
     "node-geonames-client": "0.0.2",
-    "webpack-cli": "^3.3.12",
-    "workbox-webpack-plugin": "^5.1.3"
+    "webpack-cli": "^3.3.12"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.3",
     "@babel/core": "^7.10.3",
     "@babel/plugin-transform-runtime": "^7.10.3",
+    "@babel/polyfill": "^7.10.4",
     "@babel/preset-env": "^7.10.3",
+    "babel": "^6.23.0",
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.6.0",
+    "file-loader": "^6.0.0",
+    "html-loader": "^1.1.0",
     "node-sass": "^4.14.1",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "sass-loader": "^8.0.2",
@@ -29,7 +32,8 @@
     "terser-webpack-plugin": "^3.0.6",
     "webpack": "^4.43.0",
     "webpack-bundle-analyzer": "^3.8.0",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "workbox-webpack-plugin": "^5.1.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
