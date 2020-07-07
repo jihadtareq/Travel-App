@@ -1,0 +1,52 @@
+.jumbotron {
+    background-color:$color-black;
+    color:  #fafafa;
+
+    .footer {
+        height: 120px;
+        @include f-b-c-col;
+
+        .copyright {
+            margin-bottom: 1.2em;
+        }
+    
+        .social-links {
+            display: flex;
+        }
+
+        @media (min-width: 768px){
+            flex-direction: row;
+            height: 100px;
+
+            .copyright {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+//Icons
+
+.s-icon {
+    display: block;
+    width: 32px;
+    height: 32px;
+    margin: 0 5px;
+    background-size: contain;
+    background-position: center center;
+
+    @media (min-width:768px){
+        margin: 0 0 0 10px;
+    }
+
+    &.fb {
+        background-image: url(../media/icons/fb.svg);
+    }
+    
+    &.in {
+        background-image: url(../media/icons/in.svg);
+    }
+
+    &.gh {
+        background-image: url(../media/icons/gh.svg);
+    }
+}
