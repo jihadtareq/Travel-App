@@ -1,4 +1,5 @@
-import { getWeatherAPI } from "../../../../../travel-planner imp/src/client/js/api";
+import { createTripListBlock } from './UI';
+import {scrollToSection} from './handler';
 
 //>>>>>>>>>>>>>Geonames API<<<<<<<<<<<<<<//
 const coordinatesAPI = async(city,country='')=>{
@@ -56,6 +57,9 @@ const getDataAPI = async (userData)=>{
     let trip={}
 
     trip.error='';
+    trip.dateStart=userData.dateStart
+    trip.dateEnd = userData.dateEnd
+    trip.toDoList = []
 
     //get  Current Location
     await coordinatesAPI(userData.location)
@@ -98,11 +102,12 @@ const getDataAPI = async (userData)=>{
         await weatherAPI(trip.destination.lat,trip.destination.lng)
         .then(resweather =>{
 
-           let weather = trip.resweather = {
+           let weather = trip.weather = {
                 mix_temp : resweather.data[0].max_temp,
                 min_temp : resweather.data[0].min_temp,
                 datetime : resweather.data[0].datetime,
-                timezone : resweather.timezone
+                icon : resweather.data[0].weather.icon,
+                description : resweather.data[0].weather.description
             }
             console.log(weather)
         });
@@ -157,9 +162,37 @@ const saveNewtrip = (newTripHolder) =>{
         return false;
     }
 }
+
+
+////////////////////////////////DISPLAY ALL TRIPS/////////////////////////////////////////
+
+/////////////////// update////////////////////////////////////////
+const updateForm = () => {
+    
+    //get the DOM
+    const tripFormBlock = document.getElementById('trip-form');
+    const formInputs = tripFormBlock.querySelectorAll('input');
+    const searchBtn = document.getElementById('search');
+
+    formInputs.forEach((el) => {
+        el.value = '';
+        el.disabled  = false;
+        el.classList.remove('valid');
+    });
+
+    searchBtn.classList.remove('disabled');
+
+    //hide the trip create seaction
+    document.getElementById('trip-create').classList.remove('active');
+    
+    scrollToSection('trip-list');
+}
+
+
 export{
     getDataAPI,
     saveNewtrip,
     weatherAPI,
-    PixaIMG
+    PixaIMG,
+    updateForm
 }
