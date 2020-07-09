@@ -10,7 +10,9 @@ module.exports = {
     entry: './src/client/index.js',
     output: {
       libraryTarget: 'var',
-      library: 'Client'
+      library: 'Client',
+      path: path.resolve(__dirname, './dist'),
+      filename: 'main.js'
     },
     mode: 'development',
     devtool: 'source-map',
