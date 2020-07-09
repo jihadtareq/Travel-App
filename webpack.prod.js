@@ -29,7 +29,14 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: [ MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader' ]
+                use: [ MiniCssExtractPlugin.loader,'css-loader', 'sass-loader' ]
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)$/i,
+                loader: 'file-loader',
+                options: {
+                  name: 'public/[name].[ext]',
+                },
             } 
         ]
     },
@@ -38,7 +45,11 @@ module.exports = {
             template: "./src/client/views/index.html",
             filename: "./index.html",
         }),
-        new MiniCssExtractPlugin({filename:'[name].css'}),
+        new MiniCssExtractPlugin({ 
+            filename: '[name].css',
+            chunkFilename: '[id].css',
+            ignoreOrder: false, // Enable to remove warnings about conflicting order
+        }),
         new WorkboxPlugin.GenerateSW({
             clientsClaim: true,
             skipWaiting: true
