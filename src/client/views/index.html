@@ -10,7 +10,7 @@
 </head>
  <body>
   <!------------------------------------------------CAROUSEL HEADER--------------------------------------------------->
-  <div class="jumbotron text-center" style="margin-bottom:0">
+  <div id="header" class="jumbotron text-center" style="margin-bottom:0">
     <div id="demo" class="carousel slide" data-ride="carousel">
       <ul class="carousel-indicators">
         <li data-target="#demo" data-slide-to="0" class="active"></li>
@@ -115,6 +115,24 @@
           </div>
       </div>
   </section>
+  <section id="trip-create" class="trip-create">
+    <div id="loading-gif" class="loading-gif"><div class="loading-gif__icon"></div></div>
+    <div class="trip-create-content container">
+        <h3 class="sec-title">New Trip</h3>
+        <div id="new-trip" class="new-trip">
+                <!-- here will be new-trip__location block added by JS -->
+        </div>
+    </div>
+   
+</section>
+<section id="trip-list" class="trip-list">
+    <div class="container">
+        <h3 class="sec-title">Saved Trips</h3>
+        <div id="trips-list-content" class="trip-list-content">
+            <!-- here will be new-trip__location block added by JS -->
+        </div>
+    </div>
+</section>
 </main>
 <!------------------------------------------------FOOTER--------------------------------------------------->
 <div class="jumbotron text-center" style="margin-bottom:0">
@@ -127,13 +145,6 @@
     </ul>
  </div>
 </div>
-<!--    <div id="error-block" class="full-screen">
-    <div class="error-block__content full-screen__block">
-        <div class="full-screen__close js-popup-close">&times;</div>
-        <div class="full-screen__message js-err-message">
-        </div>
-    </div>
-</div>
 <div id="to-do-list" class="full-screen">
     <div class="to-do-list__content full-screen__block">
         <div class="full-screen__close js-popup-close">&times;</div>
@@ -141,7 +152,7 @@
         <input type="hidden" name="trip-dest-nr" value="">
         <div class="save-to-do btn-green">Save</div> 
     </div>
-</div> -->
+</div>
 <!-- <script>
   //Check that service workers are supported
   if ('serviceWorker' in navigator) {
