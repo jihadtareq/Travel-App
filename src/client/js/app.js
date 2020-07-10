@@ -1,11 +1,11 @@
-import{getDataAPI,saveNewtrip} from './api'
+import{getDataAPI,saveNewTrip} from './api'
 import{validate} from './validation'
 import { toggleTripCreateSection,scrollToSection } from './handler';
 import{createTripHtml} from './UI'
 
 //this array will contaib multi-object Destinations
 
-let ArrTrip = [];
+let newTripHolder = [];
 
 const creatTripBlock = (data)=>{
     //get the DOM
@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded',()=>{
     const searchBtn = document.getElementById('search')
     const newTripBlock = document.getElementById('new-trip');
     const popupCloseBtn = document.querySelectorAll('.js-popup-close');
-    const saveToDoBtn = document.querySelector('.save-to-do');
     const navLink = document.querySelector('nav a');
 
 
@@ -45,9 +44,9 @@ document.addEventListener('DOMContentLoaded',()=>{
                         document.getElementById('search').classList.remove('disabled')
   
                     }else{
-                        ArrTrip.push(DestinationTrip)
-                        console.log(ArrTrip)
-                        creatTripBlock(ArrTrip);
+                        newTripHolder.push(DestinationTrip)
+                      
+                        creatTripBlock(newTripHolder);
                         toggleTripCreateSection('active'); //show the content
                     }
 
@@ -60,24 +59,10 @@ document.addEventListener('DOMContentLoaded',()=>{
    // Event Listener: Click
    newTripBlock.addEventListener('click', (event) => {
 
-        
-    // Click => Add More Destinations;
-         if(event.target.getAttribute('id') == 'add-more-destination') { 
-             addMoreDestinations(ArrTrip);
-          }
-
     // Click => Save New Trip;
           if(event.target.getAttribute('id') == 'save-new-trip') { 
-             if(saveNewTrip(ArrTrip)) ArrTrip = [];
+             if(saveNewTrip(newTripHolder)) newTripHolder = [];
            }
-
-    //Click => Open To Do List Popup
-          if(event.target.classList.contains('add-to-do')) {
-        
-        //get the Dest index in newTrip array
-              const tripDestNr = event.target.closest('.new-dest-actions').getAttribute('data-dest-nr');
-              showToDoListPopup(tripDestNr);
-          }
    
     }, true)
 
@@ -96,33 +81,4 @@ document.addEventListener('DOMContentLoaded',()=>{
       event.preventDefault();
       scrollToSection(event.target.dataset.nav);
       });
-
-    // Event Listener: Click => Save To DO List
-     saveToDoBtn.addEventListener('click',function(event){
-          ArrTrip = saveToDoList(ArrTrip);
-         createNewTripBlock(ArrTrip);
-      },true);
 })
-
-
-
-          
-
-const saveToDoList = (data) => {
-    
-    const toDoListText = document.querySelector('input[name="to-do-list"]').value;
-    const tripDestNr = document.querySelector('input[name="trip-dest-nr"]').value;
-    
-    if(toDoListText.length > 3) {
-        
-        data[tripDestNr].toDoList.push(toDoListText);
-        document.getElementById('to-do-list').classList.remove('active');
-        
-    }
-
-    //return modified newTripHolder
-    return data;
-    
-
-    
-}
