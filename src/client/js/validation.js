@@ -1,7 +1,6 @@
-import { isFutureDate, isDateAfterThatDate,showErrorMessage} from './handler';
+import { isFutureDate, isDateAfterThatDate} from './handler';
 
 const validate = () =>{
-    let error = ''
 
     const location = document.getElementById('location')
     const destination = document.getElementById('destination')
@@ -15,7 +14,7 @@ const validate = () =>{
         location.classList.add('error')
 
 
-        errors += '<p>Please, add the Current Location!</p>'
+       alert('Please, add the Current Location!')
     }else{
         location.classList.remove('error')
         location.classList.add('valid')
@@ -28,7 +27,7 @@ const validate = () =>{
         destination.classList.remove('valid')
         destination.classList.add('error')
 
-        error +='<p>Please, add the Destination!</p>'
+       alert('Please, add the Destination!')
     }else{
         destination.classList.remove('error')
         destination.classList.add('valid')
@@ -39,7 +38,7 @@ const validate = () =>{
         dateStart.classList.add('error');
         dateStart.classList.remove('valid');
 
-        errors += '<p>Please, select the Departing Date <br>(The Date cannot be before today)</p>';
+        alert('Please, select the Departing Date because The Date cannot be before today!');
        
     } else {
         //validated
@@ -52,7 +51,7 @@ const validate = () =>{
         dateEnd.classList.add('error')
         dateEnd.classList.remove('valid');
         
-        errors += '<p>Please, select the Returning Date <br>(The Date cannot be before the Departing Date)</p>';
+        alert('Please, select the Returning Date because The Date cannot be before the Departing Date');
         
     } else {
         dateEnd.classList.remove('error')
@@ -60,7 +59,7 @@ const validate = () =>{
     }
 
     //in case there is no error 
-    if(!error){
+    if(!errors){
         document.getElementById('search').classList.add('disabled')
         //return the validated object
         return {
@@ -72,8 +71,7 @@ const validate = () =>{
         }
     }else{
         document.getElementById('search').classList.remove('disabled')
-       // alert('Can not Search')
-        showErrorMessage(errors);
+        alert('Can not Search')
         return false
     }
 }
