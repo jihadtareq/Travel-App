@@ -2,7 +2,6 @@ import {daysDifference} from './handler'
 
 const createTripHtml = (newTrip)=>{
     let content = ''
-    let itr=0
     
     let newTripLocationBlock= document.createElement('div')
     newTripLocationBlock.classList.add('trip__block')
@@ -34,43 +33,21 @@ const createTripHtml = (newTrip)=>{
                                 <div class="weather__title">Weather forecast:</div>
                                 <div class="weather__content">
                                     <div class="weather__icon">
-                                        <img src="https://www.weatherbit.io/images/weather-icons/${dest.weather.icon}.png"/>
+                                        <img src="https://www.weatherbit.io/static/img/icons/${dest.weather.icon}.png"/>
                                     </div>
                                     <div class="weather__info">
                                         <div class="weather__data"><span>${dest.weather.mix_temp}</span> &deg;C</div>
                                         <div class="weather__commnents">${dest.weather.description}</div>
                                     </div>
                                 </div>
-                            </div>
-
-                            ${dest.toDoList.length > 0 ? `<div class="todo-block">
-                                                            <div class="todo__title">To Do List</div>
-                                                            <div class="todo__content">
-                                                                ${ dest.toDoList.map(item => '<span class="todo__item">' + item + '</span>' ).join('') }
-                                                            </div>
-                                                        </div>`    
-                                                        : `` }
-
-                        </div>
-                        <div class="new-dest-actions" data-dest-nr="${itr}">
-                            <div class="add-to-do" title="Add To Do List">
-                                <span class="add-to-do__icon">+</span> add to do list
-                            </div>
-                        </div>
-                    </div>`;
-            itr++;
+                            </div>`;
         }
-        content += `<div id="new-trip-actions" class="trip__actions">
-        <div class="nt-btn add-more">
-            <div id="add-more-destination" class="add-more-icon">+</div>
-            <p>Add More Destinations</p>
-        </div>
+        content +=`<div id="new-trip-actions" class="trip__actions">
         <div class="nt-btn save-trip">
             <div id="save-new-trip" class="save-trip-icon"><span></span></div>
             <p>Save the Trip</p>
-        </div>
-    </div>`;
-
+       </div>
+    </div>`
 
 newTripLocationBlock.innerHTML = content;
 
@@ -85,13 +62,13 @@ const createTripListBlock = (trips = '') => {
     const newTripListBlock = document.createElement('div');
     newTripListBlock.classList.add('all-trips');
 
-    let itr = 0;
+    let itr = 1;
     for(let trip of trips) {
         
         let daysLeft = daysDifference(new Date(), trip[0].dateStart);
         content += `<div class="trip-container" data-trip-nr="${itr}">
                         <div class="trip-container__header">
-                            <h4 class="trip-container__title"><span class="num-icon">${trip.length}</span> destination${trip.length > 1 ? 's': ''}</h4>
+                            <h4 class="trip-container__title"><span class="num-icon">${itr}</span> destination${trip.length > 1 ? 's': ''}</h4>
                             <div class="trip-container__remain">Trip will start in <span class="num-icon">${daysLeft}</span> days</div>
                         </div>
                     <div class="trip__block">`;
@@ -123,7 +100,7 @@ const createTripListBlock = (trips = '') => {
                     <div class="weather__title">Weather forecast:</div>
                     <div class="weather__content">
                         <div class="weather__icon">
-                            <img src="https://www.weatherbit.io/images/weather-icons/${dest.weather.icon}.png"/>
+                            <img src="https://www.weatherbit.io/static/img/icons/${dest.weather.icon}.png"/>
                         </div>
                         <div class="weather__info">
                             <div class="weather__data"><span>${dest.weather.mix_temp}</span> &deg;C</div>
@@ -131,13 +108,6 @@ const createTripListBlock = (trips = '') => {
                         </div>
                     </div>
                 </div>
-                ${dest.toDoList.length > 0 ? `<div class="todo-block">
-                                                <div class="todo__title">To Do List</div>
-                                                <div class="todo__content">
-                                                    ${ dest.toDoList.map(item => '<span class="todo__item">' + item + '</span>' ).join('') }
-                                                </div>
-                                            </div>`    
-                                        : `` }
             </div>
         </div>`;
 
@@ -151,7 +121,6 @@ const createTripListBlock = (trips = '') => {
         
         itr++; //increment
     }
-
     newTripListBlock.innerHTML = content;
     return newTripListBlock;    
 }
