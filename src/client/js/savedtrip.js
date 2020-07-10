@@ -8,14 +8,14 @@ export const savedTrip = () => {
     //hide the section when no Saved Trips 
     document.getElementById('trip-list').classList.remove('active');
     //hide the navigation
-    document.querySelector('.nav-list li').classList.remove('active');
+    document.querySelector('li.nav-list').classList.remove('active');
 
-    if(getSavedTrip && JSON.parse(getSavedTrip).length > 1) {
+    if(getSavedTrip && JSON.parse(getSavedTrip).length > 0) {
 
         const tripListContent = document.getElementById('trips-list-content');
 
         //enable navigation
-        document.querySelector('.nav-list li').classList.add('active');
+        document.querySelector('li.nav-list').classList.add('active');
 
         tripListContent.innerHTML = '';
         tripListContent.appendChild(createTripListBlock(JSON.parse(getSavedTrip)));
@@ -28,11 +28,6 @@ const removeTrip = (index) => {
     const savedTrip = JSON.parse(localStorage.getItem('tp_capstone'));
     let filterTrip = savedTrip.filter((item, i) => i != index);
     localStorage.setItem('tp_capstone', JSON.stringify(filterTrip));
-
-    if(!savedTrip.length){
-
-        document.querySelector('.nav-list li').classList.remove('active');   
-    }
 }
 
 
