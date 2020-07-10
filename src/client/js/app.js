@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded',()=>{
     //get the DOM
     const searchBtn = document.getElementById('search')
     const newTripBlock = document.getElementById('new-trip');
-    const popupCloseBtn = document.querySelectorAll('.js-popup-close');
     const navLink = document.querySelector('nav a');
 
 
@@ -35,11 +34,13 @@ document.addEventListener('DOMContentLoaded',()=>{
            let userData = validate()
 
            if(userData){
-               console.log(userData)
                  getDataAPI(userData)
                  .then(DestinationTrip =>{
                     if(DestinationTrip.error){
                         alert('There is an error in Destination trip')
+                        toggleTripCreateSection() //hide the section
+                        scrollToSection('trip-form'); //scroll back to form
+
                         // make the search btn enable   
                         document.getElementById('search').classList.remove('disabled')
   
@@ -66,14 +67,6 @@ document.addEventListener('DOMContentLoaded',()=>{
    
     }, true)
 
-
-      // Event Listener: Click => Close Pop up Message Block 
-      popupCloseBtn.forEach(element => {
-           element.addEventListener('click',function(event){
-               element.closest('.full-screen').classList.remove('active');
-        
-        },true);
-      });
 
       // Event Listener: Click => Navigation link and scoll to All trips
       navLink.addEventListener('click', (event) => {
