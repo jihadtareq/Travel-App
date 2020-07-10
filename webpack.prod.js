@@ -1,19 +1,17 @@
 const path = require('path')
 const webpack = require('webpack')
+const CopyPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin =require('optimize-css-assets-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const WorkboxPlugin = require('workbox-webpack-plugin');
-
-const HtmlWebPackPlugin = require('html-webpack-plugin');
+const HtmlWebPackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     entry: './src/client/index.js',
     output:{
-        libraryTarget: 'var',
-        library: 'Client',
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.min.js'
+        filename: 'main.js'
 	   },
     mode: 'production',
     optimization: {
@@ -41,6 +39,9 @@ module.exports = {
         ]
     },
     plugins: [
+        new CopyPlugin({
+            patterns: [
+              { from: 'src/client/media/images', to: 'src/client/media/images' }]}),
         new HtmlWebPackPlugin({
             template: "./src/client/views/index.html",
             filename: "./index.html",
