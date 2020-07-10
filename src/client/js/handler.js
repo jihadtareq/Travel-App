@@ -3,12 +3,6 @@ const scrollToSection = sectionId => document.getElementById(sectionId).scrollIn
 const isFutureDate = date => Math.ceil((new Date(date) - Date.now()) / (1000 * 60 * 60 * 24)) >= 0
 const isDateAfterThatDate = (pastDate, futureDate) => Math.ceil((new Date(futureDate) - new Date(pastDate)) / (1000 * 60 * 60 * 24)) > 0
 
-export const showErrorMessage = msg => {
-
-    const errMsgPopup = document.getElementById('error-block');
-    errMsgPopup.querySelector('.js-err-message').innerHTML = msg;
-    errMsgPopup.classList.add('active');
-}
 
 export const toggleTripCreateSection = (action = '') => {
 
