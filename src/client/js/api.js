@@ -1,5 +1,5 @@
-import { createTripListBlock } from './UI';
 import {scrollToSection} from './handler';
+import {savedTrip} from './savedtrip';
 
 //>>>>>>>>>>>>>Geonames API<<<<<<<<<<<<<<//
 const coordinatesAPI = async(city,country='')=>{
@@ -86,13 +86,12 @@ const getDataAPI = async (userData)=>{
 
             //add the destination info to the object
 
-           let dataDestination = trip.destination = {
+                trip.destination = {
                 city: resDestinaton.geonames[0].toponymName,
                 country: resDestinaton.geonames[0].countryName,
                 lat: resDestinaton.geonames[0].lat,
                 lng: resDestinaton.geonames[0].lng
             };
-           // console.log(dataDestination)
         }
     })
 
@@ -102,14 +101,13 @@ const getDataAPI = async (userData)=>{
         await weatherAPI(trip.destination.lat,trip.destination.lng)
         .then(resweather =>{
 
-           let weather = trip.weather = {
+                trip.weather = {
                 mix_temp : resweather.data[0].max_temp,
                 min_temp : resweather.data[0].min_temp,
                 datetime : resweather.data[0].datetime,
                 icon : resweather.data[0].weather.icon,
                 description : resweather.data[0].weather.description
             }
-            console.log(weather)
         });
     }
 
@@ -119,7 +117,6 @@ const getDataAPI = async (userData)=>{
     .then(resCityimag =>{
        if(resCityimag.totalHits > 0){
            trip.image = resCityimag.hits[0].largeImageURL
-           console.log( trip.image)
        }
        else{
            PixaIMG(trip.destination.country)
@@ -129,7 +126,6 @@ const getDataAPI = async (userData)=>{
                }else{
                    trip.image = false
                }
-               console.log( trip.image)
 
             })
        }
@@ -139,9 +135,9 @@ const getDataAPI = async (userData)=>{
 
 }
 
-//SAVE NEWTRIP
+//////////////////////////////////SAVE NEWTRIP///////////////////////////////////////////////
 
-const saveNewtrip = (newTripHolder) =>{
+const saveNewTrip = (newTripHolder) => {
     //check if the LocalStorage is supported by User's Browser
     if(window.localStorage !== undefined){
         let arrTPcapstone = [];
@@ -149,12 +145,17 @@ const saveNewtrip = (newTripHolder) =>{
         if (localStorage.getItem('tp_capstone')){
             //return the newtripHolder in array too
             arrTPcapstone = [...JSON.parse(localStorage.getItem('tp_capstone')),newTripHolder]
-        }else{
+        }
+        else{
             arrTPcapstone=[newTripHolder];
         }
 
         //add the trip to localstorage
-        localStorage.setItem('tp_capstone',JSON.stringify(arrTPcapstone))
+        localStorage.setItem('tp_capstone',JSON.stringify(arrTPcapstone));
+
+        updateForm();
+
+        return true;
 
     }else{
         alert('Your Browser doesn\'t support the local storage. \nPlease, update your browser!');
@@ -162,9 +163,6 @@ const saveNewtrip = (newTripHolder) =>{
         return false;
     }
 }
-
-
-////////////////////////////////DISPLAY ALL TRIPS/////////////////////////////////////////
 
 /////////////////// update////////////////////////////////////////
 const updateForm = () => {
@@ -184,6 +182,8 @@ const updateForm = () => {
 
     //hide the trip create seaction
     document.getElementById('trip-create').classList.remove('active');
+
+    savedTrip();
     
     scrollToSection('trip-list');
 }
@@ -191,8 +191,8 @@ const updateForm = () => {
 
 export{
     getDataAPI,
-    saveNewtrip,
     weatherAPI,
     PixaIMG,
+    saveNewTrip,
     updateForm
 }
