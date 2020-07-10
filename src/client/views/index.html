@@ -10,7 +10,7 @@
 </head>
  <body>
   <!------------------------------------------------CAROUSEL HEADER--------------------------------------------------->
-  <div id="header" class="jumbotron text-center" style="margin-bottom:0">
+ 
     <div id="demo" class="carousel slide" data-ride="carousel">
       <ul class="carousel-indicators">
         <li data-target="#demo" data-slide-to="0" class="active"></li>
@@ -47,7 +47,6 @@
         <span class="carousel-control-next-icon"></span>
       </a>
     </div>
-  </div>
 <!------------------------------------------------NAVBAR--------------------------------------------------->
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <a class="navbar-brand" href="#app">Home</a>
@@ -64,6 +63,11 @@
       </li>   
     </ul>
   </div>  
+  <div class="nav-list">
+    <ul>
+      <li class="nav-list"><a id="nav-list" href="#trip-list" data-nav="trip-list">All Trips</a></li>
+    </ul>
+  </div>
 </nav>
 <!------------------------------------------------MAIN_-------------------------------------------------->
 <main >
@@ -123,7 +127,6 @@
                 <!-- here will be new-trip__location block added by JS -->
         </div>
     </div>
-   
 </section>
 <section id="trip-list" class="trip-list">
     <div class="container">
@@ -145,15 +148,7 @@
     </ul>
  </div>
 </div>
-<div id="to-do-list" class="full-screen">
-    <div class="to-do-list__content full-screen__block">
-        <div class="full-screen__close js-popup-close">&times;</div>
-        <input type="text" name="to-do-list">
-        <input type="hidden" name="trip-dest-nr" value="">
-        <div class="save-to-do btn-green">Save</div> 
-    </div>
-</div>
-<!-- <script>
+<script>
   //Check that service workers are supported
   if ('serviceWorker' in navigator) {
       // Use the window load event to keep the page load performant
@@ -161,7 +156,7 @@
           navigator.serviceWorker.register('./service-worker.js');
       });
   }
-</script> -->
+</script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
