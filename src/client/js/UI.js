@@ -62,13 +62,12 @@ const createTripListBlock = (trips = '') => {
     const newTripListBlock = document.createElement('div');
     newTripListBlock.classList.add('all-trips');
 
-    let itr = 1;
+    let itr = 0;
     for(let trip of trips) {
         
         let daysLeft = daysDifference(new Date(), trip[0].dateStart);
         content += `<div class="trip-container" data-trip-nr="${itr}">
                         <div class="trip-container__header">
-                            <h4 class="trip-container__title"><span class="num-icon">${itr}</span> destination${trip.length > 1 ? 's': ''}</h4>
                             <div class="trip-container__remain">Trip will start in <span class="num-icon">${daysLeft}</span> days</div>
                         </div>
                     <div class="trip__block">`;
