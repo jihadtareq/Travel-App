@@ -14,7 +14,7 @@ const validate = () =>{
         location.classList.add('error')
 
 
-       alert('Please, add the Current Location!')
+     errors += alert('Please, add the Current Location!')
     }else{
         location.classList.remove('error')
         location.classList.add('valid')
@@ -22,12 +22,11 @@ const validate = () =>{
 
     //check the destination
     if(destination.value.length<3){
-        let error =''
 
         destination.classList.remove('valid')
         destination.classList.add('error')
 
-       alert('Please, add the Destination!')
+        errors += alert('Please, add the Destination!')
     }else{
         destination.classList.remove('error')
         destination.classList.add('valid')
@@ -38,7 +37,7 @@ const validate = () =>{
         dateStart.classList.add('error');
         dateStart.classList.remove('valid');
 
-        alert('Please, select the Departing Date because The Date cannot be before today!');
+        errors += alert('Please, select the Departing Date because The Date cannot be before today!');
        
     } else {
         //validated
@@ -51,7 +50,7 @@ const validate = () =>{
         dateEnd.classList.add('error')
         dateEnd.classList.remove('valid');
         
-        alert('Please, select the Returning Date because The Date cannot be before the Departing Date');
+        errors += alert('Please, select the Returning Date because The Date cannot be before the Departing Date');
         
     } else {
         dateEnd.classList.remove('error')
