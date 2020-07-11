@@ -13,6 +13,7 @@
     "mini-css-extract-plugin": "^0.9.0",
     "node-geonames-client": "0.0.2",
     "regenerator-runtime": "^0.13.5",
+    "superagent": "^5.3.1",
     "webpack-cli": "^3.3.12"
   },
   "devDependencies": {
@@ -33,6 +34,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1",
+    "supertest": "^4.0.2",
     "terser-webpack-plugin": "^3.0.6",
     "webpack": "^4.43.0",
     "webpack-bundle-analyzer": "^3.8.0",
