@@ -1,4 +1,4 @@
-import { createTripListBlock } from './UI';
+import { createTripBlock } from './UI';
 
 export const savedTrip = () => {
 
@@ -18,7 +18,7 @@ export const savedTrip = () => {
         document.querySelector('li.nav-list').classList.add('active');
 
         tripListContent.innerHTML = '';
-        tripListContent.appendChild(createTripListBlock(JSON.parse(getSavedTrip)));
+        tripListContent.appendChild(createTripBlock(JSON.parse(getSavedTrip)));
         document.getElementById('trip-list').classList.add('active');
 
     }

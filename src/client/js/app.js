@@ -1,6 +1,6 @@
 import{getDataAPI,saveNewTrip} from './api'
 import{validate} from './validation'
-import { toggleTripCreateSection,scrollToSection } from './handler';
+import { tripCreateSection,scrollToSection } from './handler';
 import{createTripHtml} from './UI'
 
 //this array will contaib multi-object Destinations
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded',()=>{
                  .then(DestinationTrip =>{
                     if(DestinationTrip.error){
                         alert('There is an error in Destination trip')
-                        toggleTripCreateSection() //hide the section
+                        tripCreateSection() //hide the section
                         scrollToSection('trip-form'); //scroll back to form
 
                         // make the search btn enable   
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded',()=>{
                         newTripHolder.push(DestinationTrip)
                       
                         creatTripBlock(newTripHolder);
-                        toggleTripCreateSection('active'); //show the content
+                        tripCreateSection('active'); //show the content
                     }
 
                  });

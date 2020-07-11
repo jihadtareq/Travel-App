@@ -56,7 +56,7 @@ return newTripLocationBlock;
 
 }
 
-const createTripListBlock = (trips = '') => {
+const createTripBlock = (trips = '') => {
 
     let content = '';
     const newTripListBlock = document.createElement('div');
@@ -126,6 +126,6 @@ const createTripListBlock = (trips = '') => {
 
 export {
     createTripHtml, 
-    createTripListBlock
+    createTripBlock
     
 }
