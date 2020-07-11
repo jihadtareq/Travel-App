@@ -1,7 +1,7 @@
 import { isFutureDate, isDateAfterThatDate} from './handler';
 
 const validate = () =>{
-
+    let errors=''
     const location = document.getElementById('location')
     const destination = document.getElementById('destination')
     const dateStart = document.getElementById('date-start')
