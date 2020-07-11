@@ -1,7 +1,21 @@
-const daysDifference = (startDate,endDate)=>Math.ceil(Math.abs(new Date(endDate)-new Date(startDate))/(1000*60*60*24));
-const scrollToSection = sectionId => document.getElementById(sectionId).scrollIntoView({  behavior: 'smooth' });
-const isFutureDate = date => Math.ceil((new Date(date) - Date.now()) / (1000 * 60 * 60 * 24)) >= 0
-const isDateAfterThatDate = (pastDate, futureDate) => Math.ceil((new Date(futureDate) - new Date(pastDate)) / (1000 * 60 * 60 * 24)) > 0
+const daysDifference = (startDate,endDate)=>{
+    let substract = Math.abs(new Date(endDate)-new Date(startDate));
+    let divide =Math.ceil(substract)/(1000*60*60*24);
+    return divide
+}
+
+const scrollToSection = (sectionId) => {
+    document.getElementById(sectionId).scrollIntoView({  behavior: 'smooth' });
+}
+
+const isFutureDate = (date) => {
+    let substract = new Date(date) - Date.now()
+    Math.ceil( substract / (1000 * 60 * 60 * 24)) >= 0
+}
+const isDateAfterThatDate = (pastDate, futureDate) => {
+    let substract =new Date(futureDate) - new Date(pastDate)
+    Math.ceil( substract / (1000 * 60 * 60 * 24)) > 0
+}
 
 
 const toggleTripCreateSection = (action = '') => {
