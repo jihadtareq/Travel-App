@@ -4,7 +4,7 @@ const isFutureDate = date => Math.ceil((new Date(date) - Date.now()) / (1000 * 6
 const isDateAfterThatDate = (pastDate, futureDate) => Math.ceil((new Date(futureDate) - new Date(pastDate)) / (1000 * 60 * 60 * 24)) > 0
 
 
-export const toggleTripCreateSection = (action = '') => {
+const toggleTripCreateSection = (action = '') => {
 
     const tripCreateSection = document.getElementById('trip-create');
     
@@ -26,4 +26,5 @@ export {
     scrollToSection,
     isFutureDate,
     isDateAfterThatDate,
+    toggleTripCreateSection
 }
