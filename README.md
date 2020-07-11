@@ -1,17 +1,38 @@
-# Weather-Journal App Project
+## Travel App Project
+Udacity - Capstone Project.
+
+## Materials
+Front-end:HTML,CSS,SASS,Wepback,Babel,Javascript,API
+Back-end:Nodejs,Express.js
+for-test:Jest
 
 ## Overview
-This project requires you to create an asynchronous web app that uses Web API and user data to dynamically update the UI. 
+This project requires you to create an asynchronous travel web app that uses 3 API and user data to dynamically update the UI. 
 
-## Instructions
-This will require modifying the `server.js` file and the `website/app.js` file. You can see `index.html` for element references, and once you are finished with the project steps, you can use `style.css` to style your application to customized perfection.
+## what is this app actually doing?
+helping users to plan thier trip with start date and end date and know what the weather is for th country they will travel to,user can remove the trip .
+
+## API
+we here use 3 API:
+1-Geonames
+2-weatherbit
+3-pixabay
 
 ## ES6
-All javascript has been written in app.js file ,this file defines variables of project and contains APIkey.
+All javascript has been written in js folder.
+
+## SASS
+all SCSS file has been written in styles folder.
+
 
 ## server
-server.js contains the port that the localhost is running on.
+server.js contains the port that the localhost is running on port 8080.
 
-## end
-you can know all packages which installed in the project from package-lock.json file . 
+## running
+install npm at first, 
+copy this `npm i`...
+second don't forget to build production,
+copy this `npm run build-prod` then you can run it `npm run start`...
+if you want trying on development mode copy this `npm run build-dev`.
+
 
