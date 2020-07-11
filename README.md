@@ -35,4 +35,10 @@ second don't forget to build production,
 copy this `npm run build-prod` then you can run it `npm run start`...
 if you want trying on development mode copy this `npm run build-dev`.
 
+## Extend Options
+1- I added end date and display length of trip
+2-Allow the user to remove the trip.
+3-Use Local Storage to save the data so that when they close, then revisit the page, their information is still there.
+4-Incorporate icons into forecast.
+5-user can add more than one trip.
 
